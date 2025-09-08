@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using System.Data.Common;
 using System.Collections;
+using NUnit.Framework.Internal.Execution;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 
 [RequireComponent(typeof(AudioSource))] //AudioSorceコンポーネントが必要
 
@@ -102,20 +104,39 @@ public class GameManagerScripts : MonoBehaviour
     }
     void CreateCaractor()
     {
-        
+        //回転せずキャラクターをランダム座標で生成
+        GebeCamera = Instantiate(characters[Random.Range(0, characters.Length)],
+        transform.position, Quaternion.identity);
+        //物理挙動停止
+        GebeCamera.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
     }
 
-    iEnumerator IntervalCoroutine()
+    IEnumerator IntervalCoroutine()
     {
-
+        isInterval = true;
+        yield return new WaitForSeconds(1); //IntervalTime 1Secons
+        isInterval = false;
     }
 
     bool CheckMove()
     {
-
+        //Chearactorのタグをオブジェクトに投入
+        GameObject[] characterObjects = GameObject.FindGameObjectsWithTag("Caractor");
+        foreach (GameObject character in characterObjects)
+        {
+            //Untiy6よりRegidBody2D.VelocityがAPI名変更で非推奨になったので、linearVelocityに改変
+            if (character.GetComponent<Rigidbody2D>().linearVelocity.magnitude > 0.0001)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     void UpdateScore()
     {
-
+        score++;
+        scoreText.text = score.ToString(); //スコア情報を更新
+        Debug.Log("現在のスコアは" + score + "です");
     }
 }
