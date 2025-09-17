@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5122892112839709043}
   m_Layer: 0
   m_Name: kakedasu_suit6_0
-  m_TagString: Caractor
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

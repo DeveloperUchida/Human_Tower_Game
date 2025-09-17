@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8531610748972681420}
   m_Layer: 0
   m_Name: pose_shirohata_man_0
-  m_TagString: Caractor
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
