@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
-using System.Data.Common;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))] //AudioSourceコンポーネントが必要
 public class GameManager : MonoBehaviour
@@ -14,7 +13,7 @@ public class GameManager : MonoBehaviour
     bool isButtonReleasedOnButton = false; //ボタンから指を離した直後
     public static bool isGameOver = false; //ゲームオーバー状態を管理
     int score; //スコアを管理
-    [SerializeField] TextMeshProUGUI scoreText; //スコア表示用のTextMeshProUGUI
+    public Text scoreText; //スコア表示用のTextMeshProUGUI
     bool isGameStarted = false; //ゲーム開始状態を管理
 
     [SerializeField] AudioClip fall_se;
